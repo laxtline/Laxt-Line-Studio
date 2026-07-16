@@ -1,0 +1,84 @@
+================================================================================
+  AI PROMPT — Apne website project ke liye DOCUMENTATION banane ke liye
+================================================================================
+
+  Ye file kis liye hai:
+  Agar future me aap kisi bhi AI (ChatGPT, Claude, Gemini, etc.) se apne
+  website project ke liye ek poori documentation file banwana chahte ho,
+  to neeche diya gaya PROMPT copy karke us AI ko de dena.
+
+  Kaise use karein:
+    1. Neeche "===== PROMPT START =====" se "===== PROMPT END =====" tak ka
+       text copy karo.
+    2. AI me paste karo.
+    3. Agar AI ke paas aapke files ka access hai to woh khud padh lega; warna
+       apni files (index.html, css, js) ya unke details bhi saath me de dena.
+
+
+================================================================================
+  ===== PROMPT START =====
+================================================================================
+
+  You are a senior technical writer. I want you to create a complete, clear, and
+  professional DOCUMENTATION file for my website project.
+
+  My project: a single-page (one-page scroll) portfolio website for a
+  professional video editor / visual storyteller. It is built with plain HTML,
+  CSS, and vanilla JavaScript (no frameworks, no build tools). It has an
+  animated hero, a custom cursor, multiple sections, and an interactive video
+  gallery with a fullscreen viewer (lightbox). The gallery contains many videos,
+  so performance and memory management are important.
+
+  Please analyze the project files I provide (HTML, CSS, JS, and folder
+  structure) and then write the documentation. If something is unclear, make a
+  reasonable, clearly-labelled assumption instead of leaving it blank.
+
+  The documentation MUST cover these topics, each as its own clearly-titled
+  section:
+
+    1.  Project Overview — what the website is, who it's for, the core idea.
+    2.  Tech Stack — every language, API, font, and tool used, and WHY no
+        framework was used.
+    3.  How It Was Built — the build approach, file-separation structure, and
+        the overall design language (colors, fonts, theme, visual motifs).
+    4.  Full Folder & File Structure — a tree, with a one-line purpose for every
+        file and folder (include approximate line counts / sizes if known).
+    5.  Page Sections — list each section in scroll order with a short
+        description of what it shows.
+    6.  Gallery System — how the gallery works (layout, data attributes,
+        desktop hover vs mobile autoplay, mute behaviour, fullscreen viewer).
+    7.  Performance Engineering — explain the lazy-loading and memory-release
+        system, off-screen pausing, GPU-friendly techniques, and why they
+        matter (e.g. preventing crashes with many videos).
+    8.  SEO & Shareability — meta tags, Open Graph / Twitter cards, robots.txt,
+        sitemap.xml, web manifest, favicon. Note any placeholder domain to
+        replace before going live.
+    9.  Branding — brand name, how the logo is styled, brand color variables,
+        and which links/handles must NOT be changed.
+    10. How to Run / Deploy — local run steps and static-hosting options, plus
+        a note on media storage size and how to reduce it.
+    11. How to Edit in Future — quick pointers on where to change colors,
+        styling, behaviour, and how to add/remove media.
+    12. Contact details.
+
+  Formatting rules:
+    - Write in plain text (.txt friendly), using clear section headers and
+      simple separators (lines of = or -).
+    - Use simple, beginner-friendly language so a non-expert owner can
+      understand it. Short paragraphs and bullet points.
+    - Be accurate to the actual code — do not invent features that don't exist.
+    - Keep it practical: focus on what the owner needs to understand and
+      maintain the site.
+
+  Output: one complete documentation file, ready to save as DOCUMENTATION.txt.
+
+================================================================================
+  ===== PROMPT END =====
+================================================================================
+
+
+  TIP: Agar aap chahte ho ki documentation kisi aur language me ho (jaise
+  Hindi ya Hinglish), to prompt ke end me ek line add kar dena:
+       "Write the documentation in simple Hinglish (Hindi + English mix)."
+
+================================================================================

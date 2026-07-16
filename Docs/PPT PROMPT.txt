@@ -1,0 +1,85 @@
+================================================================================
+  AI PROMPT — Apne website project ke liye PPT (presentation) banane ke liye
+================================================================================
+
+  Ye file kis liye hai:
+  Agar future me aap kisi bhi AI (ChatGPT, Claude, Gemini, Gamma, etc.) se
+  apne website project ke liye ek college-style project presentation (PPTX)
+  banwana chahte ho, to neeche diya gaya PROMPT copy karke us AI ko de dena.
+
+  Kaise use karein:
+    1. "===== PROMPT START =====" se "===== PROMPT END =====" tak copy karo.
+    2. AI me paste karo.
+    3. Agar AI ke paas aapke files ka access ho to woh khud padh lega; warna
+       apni DOCUMENTATION.txt ya project details bhi saath me de dena.
+    4. Tool tip: text-based AI se ".pptx file" maango; ya Gamma / SlidesGPT /
+       Canva jaise tools me ye prompt daal kar slides bana sakte ho.
+
+
+================================================================================
+  ===== PROMPT START =====
+================================================================================
+
+  You are an expert presentation designer. Create a professional, college
+  final-year style PROJECT PRESENTATION (deliver as a .pptx file) for my website
+  project. The presentation should look clean, modern and "premium", and should
+  include slide transitions and entrance animations so it feels polished when
+  presented for a review/viva.
+
+  ABOUT THE PROJECT:
+  A cinematic, single-page (one-page scroll) PORTFOLIO WEBSITE for a professional
+  video editor / visual storyteller. Built with plain HTML5, CSS3 and Vanilla
+  JavaScript — no frameworks, no build tools. It features an animated hero
+  (canvas particles), a custom cursor, multiple sections, and a large interactive
+  video gallery with a fullscreen viewer (lightbox). It contains 50+ videos, so
+  smart lazy-loading and memory management keep it fast.
+
+  DESIGN / THEME:
+  - Dark cinematic theme: near-black background (#080808), off-white text
+    (#F5F2EE), bold red accent (#E8392A).
+  - Big, bold display headings. Minimal, confident, professional layout.
+  - Use a thin red strip/accent on slides for brand consistency.
+  - Add slide transitions (fade/push/wipe) and simple entrance animations
+    (fade/fly-in) on key elements.
+
+  SLIDES TO INCLUDE (each as its own slide, in this order):
+    1.  Title slide — project name, tagline, "submitted by" line.
+    2.  Introduction — what the website is and who it's for.
+    3.  Aim & Objectives — bullet list of goals.
+    4.  Technology Stack — HTML5, CSS3, Vanilla JS, browser APIs, fonts; and a
+        line on why no framework was used. Use 3 panels/cards.
+    5.  Project Structure / Architecture — folder & file tree with purposes.
+    6.  Website Sections — list each page section in scroll order (Hero, Work,
+        About, Services, Software, Contact, Socials, All-Projects gallery, etc.).
+    7.  Gallery System (core feature) — how it works + a few stat chips
+        (e.g. number of media files, videos, images).
+    8.  Performance Optimization — lazy loading, memory release, off-screen
+        pausing, GPU-friendly CSS; explain why it prevents crashes.
+    9.  SEO, Branding & Extras — meta/OG tags, robots.txt, sitemap, manifest,
+        custom cursor, responsive, WhatsApp contact.
+    10. Challenges & Solutions — a 2-column table (problem -> solution).
+    11. Conclusion & Future Scope — summary + future improvements.
+    12. Thank You — closing slide with contact details.
+
+  FORMATTING RULES:
+    - 16:9 widescreen slides.
+    - Keep text concise — bullet points, not paragraphs. Readable font sizes.
+    - Consistent header style on every content slide (kicker label + title +
+      small red accent bar) and a footer with the project name + slide number.
+    - Do not invent features that don't exist; stay accurate to the description.
+    - Make it presentation-ready for a project review / viva.
+
+  OUTPUT: a complete .pptx file with ~12 slides, themed and animated as above.
+
+================================================================================
+  ===== PROMPT END =====
+================================================================================
+
+
+  TIP: Hindi/Hinglish me presentation chahiye to prompt ke end me add karo:
+       "Write all slide text in simple Hinglish (Hindi + English mix)."
+
+  TIP: Aur slides chahiye (jaise 'Testimonials', 'Demo Screenshots', 'Team')
+       to slide list me unka naam add kar dena.
+
+================================================================================

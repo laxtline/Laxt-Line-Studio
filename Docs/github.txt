@@ -1,0 +1,115 @@
+============================================================
+ LAXTLINE — GitHub par website LIVE karne ki guide
+ (sirf reference — project me koi change nahi)
+============================================================
+
+
+------------------------------------------------------------
+1) USERNAME  (kya rakhein)
+------------------------------------------------------------
+Tumhara existing handle har jagah "suryafx013" hai
+(X/Twitter + GitHub link site me already isi naam se hai).
+Consistency ke liye yahi best hai.
+
+  PEHLA  CHOICE  (recommended) :  suryafx013
+  DUSRA  CHOICE  (brand match) :  laxtline
+  TEESRA CHOICE                :  laxtline-studio  ya  suryafx
+
+Note:
+- GitHub username 39 char tak, sirf letters/numbers/hyphen.
+- Agar "laxtline" available ho to brand ke liye sabse sundar.
+- Agar nahi mile to "suryafx013" safe rehta hai (already use me).
+
+
+------------------------------------------------------------
+2) REPOSITORY NAME  (do tarike)
+------------------------------------------------------------
+
+OPTION A — site root URL par chahiye
+  (https://USERNAME.github.io/)
+    Repo ka naam EXACTLY ye rakho:
+        suryafx013.github.io
+    (yaani  <username>.github.io)
+    -> Site khulegi:  https://suryafx013.github.io
+
+OPTION B — project URL chalega bhi
+  (https://USERNAME.github.io/laxtline/)
+    Repo ka naam:
+        laxtline   (ya laxtline-portfolio)
+    -> Site khulegi:  https://suryafx013.github.io/laxtline/
+
+Aage chal kar laxtline.com domain connect karna ho to
+dono option chalte hain (Option A thoda seedha rehta hai).
+
+
+------------------------------------------------------------
+3) DESCRIPTION  (repo ke "Description" box me paste karo)
+------------------------------------------------------------
+Chhota (recommended):
+
+LAXTLINE — Visual storyteller & video editor portfolio. Cinematic edits, VFX, color grading & design. Built with HTML, CSS & vanilla JavaScript.
+
+----
+
+Aur chhota version (agar jagah kam lage):
+
+LAXTLINE — Cinematic video edits, VFX & color grading portfolio. Pure HTML/CSS/JS.
+
+
+------------------------------------------------------------
+4) WEBSITE FIELD  (repo ke right side "Website" box)
+------------------------------------------------------------
+    https://laxtline.com
+  (ya jab tak domain connect na ho:)
+    https://suryafx013.github.io
+
+
+------------------------------------------------------------
+5) TOPICS / TAGS  (repo me "Add topics" — search me help karta hai)
+------------------------------------------------------------
+    portfolio  video-editing  vfx  color-grading  motion-graphics
+    html  css  javascript  single-page-website  laxtline  cinematic
+
+
+------------------------------------------------------------
+6) LIVE karne ke STEPS (GitHub Pages)
+------------------------------------------------------------
+  1. github.com par login (username: suryafx013).
+  2. "New repository" -> naam upar wala (Option A ya B) ->
+     Public -> Create.
+  3. Repo me poora project upload karo:
+        index.html   (ye hi main/home page khulega)
+        css/  folder  (poora)
+        js/   folder  (poora)
+        Logo  & Background/  folder  (poora)
+        baki sab files (robots.txt, sitemap.xml, site.webmanifest...)
+     -> Drag & drop ya "Add file > Upload files".
+  4. Repo -> Settings -> Pages ->
+        Source: "Deploy from a branch"
+        Branch: main  /  (root)  -> Save.
+  5. 1-2 minute wait karo -> upar Pages section me live URL aa jayega.
+  6. URL kholo, ek baar HARD REFRESH (Ctrl + F5).
+
+
+------------------------------------------------------------
+7) DEPLOY ke baad DHYAN DENE ki baatein
+------------------------------------------------------------
+  - GitHub by default "index.html" hi serve karta hai (home page).
+    "SURYA_FX.com.html" sirf backup hai — usse deploy mat karo.
+  - GitHub case-sensitive hai. Folder/file ke naam BILKUL waise hi
+    upload ho jaise project me hain, especially:
+        "Logo  & Background"   (beech me DO space hai — dhyan se)
+    warna logo/background image 404 ho sakta hai.
+  - Saari project videos Cloudinary se aati hain (internet se),
+    is liye unhe upload karne ki zaroorat nahi — apne aap load hongi.
+  - Har update ke baad live site par Ctrl + F5 (cache clear) karo.
+
+
+------------------------------------------------------------
+8) custom domain laxtline.com (optional, baad me)
+------------------------------------------------------------
+  Settings -> Pages -> "Custom domain" me  laxtline.com  daalo,
+  phir apne domain provider par GitHub ke IP/CNAME point karo.
+  (Ye step site live hone ke baad araam se kar sakte ho.)
+
+============================================================

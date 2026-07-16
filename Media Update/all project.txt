@@ -1,0 +1,149 @@
+================================================================================
+  CHANGES.TXT  —  "All Projects" folder ka guide
+  (Yahan ke media kaise add / delete / replace karein)
+================================================================================
+
+  Folder location:
+      C:\SURYA\My_Projects\edit\All Projects
+
+  Is folder me kya hai:
+      Project Gallery (upar wala section) aur ALL PROJECTS (neeche wala section)
+      DONO ke saare videos (.mp4) aur photos (.jpg) yahin ek hi folder me hain.
+      Total: 69 media files (~604 MB).
+
+  IMPORTANT BAAT (zaroor padho):
+      Dono section SAME folder use karte hain — alag folder banane ki zaroorat
+      NAHI hai. Ek hi file dono jagah use ho sakti hai.
+
+
+--------------------------------------------------------------------------------
+  WEBSITE KE KAUN SE FILE ME YE MEDIA JUDA HAI?
+--------------------------------------------------------------------------------
+
+  Media ka naam in 2 files ke ANDAR likha hota hai (HTML me):
+
+    1) C:\SURYA\My_Projects\edit\index.html      <-- MAIN file (ye live hoti hai)
+    2) C:\SURYA\My_Projects\edit\SURYA_FX.com.html  <-- BACKUP (purani single file)
+
+  Dono me change karna hota hai taaki dono consistent rahein.
+
+  Section ke hisaab se kahaan:
+    • "Project Gallery" (upar)  -> index.html me  id="projectGalleryGrid"
+                                   (videos ke id pg01, pg02, pg03 ... aise hote hain)
+    • "ALL PROJECTS" (neeche)   -> index.html me  id="galleryGrid"
+                                   (videos ke id gv3000, gv3001 ... aise hote hain)
+
+
+--------------------------------------------------------------------------------
+  EK MEDIA CARD KA CODE KAISA DIKHTA HAI (sample)
+--------------------------------------------------------------------------------
+
+  VIDEO card (.mp4):
+
+    <div class="gal-item" data-type="video" data-fs-type="video"
+         data-fs-src="All Projects/Reel Edit.mp4"
+         data-fs-cat="Reel" data-fs-name="Reel Edit">
+      <div class="gal-media-wrap">
+        <video class="gal-video" id="gv3050" loop playsinline preload="metadata" muted>
+          <source data-src="All Projects/Reel Edit.mp4" type="video/mp4">
+        </video>
+        <div class="gal-overlay"></div>
+        <div class="vid-thumb-overlay">...play icon...</div>
+        <div class="gal-play-btn" onclick="galTogglePlay('gv3050',this)">...</div>
+        <div class="gal-bottom">...category + name + mute button...</div>
+      </div>
+    </div>
+
+  PHOTO card (.jpg):
+
+    <div class="gal-item gal-wide" data-type="photo" data-fs-type="photo"
+         data-fs-src="All Projects/Neon Edit.jpg"
+         data-fs-cat="Photo Edit" data-fs-name="Neon Edit">
+      <div class="gal-media-wrap">
+        <img decoding="async" class="gal-photo" src="All Projects/Neon Edit.jpg"
+             alt="Neon Edit" loading="lazy">
+        <div class="gal-overlay"></div>
+        <div class="gal-bottom">...category + name...</div>
+      </div>
+    </div>
+
+  NOTE: file ka naam jaisa folder me hai BILKUL waisa hi likhna (spaces, capital,
+        dots sab same). Warna video/photo blank dikhega.
+
+
+--------------------------------------------------------------------------------
+  KAAM 1 :  NAYA VIDEO / PHOTO ADD KARNA
+--------------------------------------------------------------------------------
+
+  Step 1: Apni nayi file is folder me daal do:
+          C:\SURYA\My_Projects\edit\All Projects\
+
+  Step 2: index.html kholo (Notepad/VS Code me).
+
+  Step 3: Jis section me dikhana hai usko dhundo:
+            - Project Gallery ke liye  ->  id="projectGalleryGrid"
+            - ALL PROJECTS ke liye     ->  id="galleryGrid"
+
+  Step 4: Upar diya gaya "VIDEO card" ya "PHOTO card" ka poora block COPY karke
+          waha PASTE karo (kisi do card ke beech me).
+
+  Step 5: Block me 3 cheez badlo:
+            (a) data-fs-src="All Projects/TUMHARI-FILE.mp4"
+            (b) <source data-src="All Projects/TUMHARI-FILE.mp4" ...>   (video ke liye)
+                ya  src="All Projects/TUMHARI-FILE.jpg"                 (photo ke liye)
+            (c) data-fs-cat / data-fs-name / alt  -> category aur naam apne hisaab se
+
+  Step 6: VIDEO ke liye ek UNIQUE id rakho:
+            - id="gv30XX"  (galleryGrid me, koi naya number jo pehle use na hua ho)
+            - onclick="galTogglePlay('gv30XX',this)"  -> id wahi same likhna
+          (Photo me id ki zaroorat nahi.)
+
+  Step 7: Same change SURYA_FX.com.html me bhi kar do (consistency ke liye).
+
+  Step 8: Save karke browser me Ctrl+F5 se check kar lo.
+
+
+--------------------------------------------------------------------------------
+  KAAM 2 :  KOI MEDIA DELETE KARNA
+--------------------------------------------------------------------------------
+
+  Step 1: index.html me us file ka naam search karo (Ctrl+F),
+          jaise:  All Projects/Reel Edit.mp4
+
+  Step 2: Uska poora card block hatao —  <div class="gal-item" ...> se lekar
+          uske band hone wale </div> tak (upar sample dekho ek card kitna bada hai).
+          Dono jagah dekhna: ek hi file Project Gallery aur ALL PROJECTS dono me
+          ho sakti hai — jis section se hatana hai wahi card hatao.
+
+  Step 3: Same SURYA_FX.com.html me bhi hatao.
+
+  Step 4: (Optional) Agar woh file kahin aur use nahi ho rahi, to physical file
+          folder se delete kar sakte ho storage bachane ke liye. Pehle confirm
+          kar lo ki index.html me uska naam ab kahin nahi bacha.
+
+
+--------------------------------------------------------------------------------
+  KAAM 3 :  MEDIA REPLACE KARNA (purani jagah nayi video/photo)
+--------------------------------------------------------------------------------
+
+  Sabse aasaan tareeka:
+    - Nayi file ka naam EXACTLY purani file jaisa rakh do, aur folder me purani
+      ko replace kar do. Tab code me kuchh badalne ki zaroorat hi nahi.
+
+  Ya phir:
+    - Nayi file alag naam se daalo, aur index.html (+ backup) me us card ka
+      data-fs-src / source src / name purani jagah badal do.
+
+
+--------------------------------------------------------------------------------
+  ZAROORI YAAD RAKHNE WALI BAATEIN
+--------------------------------------------------------------------------------
+
+  • File ka naam code me HU-BA-HU same likhna (spaces/capital/dot sab).
+  • Har video ka id UNIQUE hona chahiye (do video same id par mat rakho).
+  • Change hamesha DONO me karo: index.html AUR SURYA_FX.com.html
+  • CSS/JS files (css/, js/) ko media add/delete ke liye chhune ki zaroorat NAHI.
+  • Change ke baad browser me Ctrl + F5 (hard refresh) karke test karo.
+  • Bada change karne se pehle file ki ek copy (backup) bana lena safe rehta hai.
+
+================================================================================

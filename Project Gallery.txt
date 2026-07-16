@@ -1,0 +1,37 @@
+================================================================================
+  PROJECT GALLERY  —  is section me kaun kaun se media use ho rahe hain
+  (Website section: "Project Gallery" / upar wala)
+  Code me jagah: index.html  ->  id="projectGalleryGrid"  (line ~377 se ~562)
+  Total: 20 media   |   Folder: "All Projects"
+  (Order bilkul website jaisa hi hai, upar se neeche)
+--------------------------------------------------------------------------------
+
+  #   FILE NAME                          TYPE     CATEGORY (site)
+  --  ---------------------------------  -------  ------------------
+  01  Velocity Character Edit.mp4        video    Velocity
+  02  Velocity Edit.mp4                  video    Velocity
+  03  Velocity Reel Edit.mp4             video    Velocity
+  04  Vfx_Edit.mp4                       video    VFX
+  05  Aesthetic Edit.mp4                 video    Aesthetic
+  06  Color_grading.jpg                  photo    Color Grade
+  07  Commercial Edit.mp4                video    Commercial
+  08  Commercial_Edit.mp4                video    Commercial
+  09  Corporate Edit.mp4                 video    Corporate
+  10  Cyberpunk Edit.jpg                 photo    Cyberpunk
+  11  Fantasy Edit.jpg                   photo    Fantasy
+  12  Gaming Shorts Edit..mp4            video    Gaming
+  13  Influencer Edit..mp4               video    Influencer
+  14  Influencer_Edit.mp4                video    Influencer
+  15  Instagram Aesthetic Edit.jpg       photo    Instagram
+  16  Montage Edit(Gaming)..mp4          video    Gaming
+  17  Post_Design.jpg                    photo    Design
+  18  Smooth Transition Edit.mp4         video    Transition
+  19  Thumbnail Edit.jpg                 photo    Thumbnail
+  20  Typography_Edit.mp4                video    Typography
+
+--------------------------------------------------------------------------------
+  NOTE:
+   • Ye saari files "All Projects" folder me hi rakhi hain (same folder).
+   • File ka naam code me HU-BA-HU same hona chahiye (space/capital/dot sab).
+   • Ye 20 files "All Projects" section me bhi dikhti hain (dono jagah use).
+================================================================================

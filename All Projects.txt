@@ -1,0 +1,87 @@
+================================================================================
+  ALL PROJECTS  —  is section me kaun kaun se media use ho rahe hain
+  (Website section: "All Projects" / neeche wala)
+  Code me jagah: index.html  ->  id="galleryGrid"  (line ~1053 se ~1809)
+  Total: 70 media   |   Folder: "All Projects"
+  (Order bilkul website jaisa hi hai, upar se neeche)
+--------------------------------------------------------------------------------
+
+  #   FILE NAME                          TYPE     CATEGORY (site)
+  --  ---------------------------------  -------  ------------------
+  01  Compositing Edit.mp4               video    VFX
+  02  Corporate Edit.mp4                 video    Corporate
+  03  Creative Portrait Edit.jpg         photo    Portrait
+  04  Cyberpunk Edit.jpg                 photo    Photo Edit
+  05  Documentary Edit.mp4               video    Cinematic
+  06  Dreamy Soft Edit.jpg               photo    Photo Edit
+  07  Educational Edit.mp4               video    Edit
+  08  Esports Gaming Edit.mp4            video    Gaming
+  09  Event Cinematic Edit.mp4           video    Cinematic
+  10  Fantasy Edit.jpg                   photo    Photo Edit
+  11  Gaming Classic Edit II.mp4         video    Gaming
+  12  Gaming Montage....mp4              video    Gaming
+  13  Gaming Montage...mp4               video    Gaming
+  14  Gaming Shorts Edit..mp4            video    Gaming
+  15  Gaming Shorts Edit.mp4             video    Gaming
+  16  Gaming Thumbnail Edit.jpg          photo    Gaming
+  17  Gaming Velocity Edit.mp4           video    Gaming
+  18  Gaming Velocity.mp4                video    Gaming
+  19  Influencer Edit..mp4               video    Influencer
+  20  Influencer_Edit.mp4                video    Influencer
+  21  Instagram Aesthetic Edit.jpg       photo    Aesthetic
+  22  Instagram Edit.mp4                 video    Instagram
+  23  Instagram Reel.mp4                 video    Instagram
+  24  Kill Montage Edit.mp4              video    Gaming
+  25  Model Edit.jpg                     photo    Portrait
+  26  Montage Edit(Gaming)..mp4          video    Gaming
+  27  Montage Edit(Gaming).mp4           video    Gaming
+  28  Neon Edit.jpg                      photo    Photo Edit
+  29  Post_Design.jpg                    photo    Design
+  30  POST_EDIT.jpg                      photo    Design
+  31  Reel Cover Edit.jpg                photo    Design
+  32  Reel Edit..mp4                     video    Reel
+  33  Reel Edit.mp4                      video    Reel
+  34  Short Film Edit.mp4                video    Cinematic
+  35  Shorts Edit..mp4                   video    Edit
+  36  Smooth Transition Edit.mp4         video    Transition
+  37  Storytelling Edit.mp4              video    Edit
+  38  Stream Highlights Edit.mp4         video    Gaming
+  39  Thumbnail Edit..jpg                photo    Design
+  40  Thumbnail Edit.jpg                 photo    Design
+  41  Travel Edit..mp4                   video    Vlog
+  42  Travel Edit.mp4                    video    Vlog
+  43  Typography_Edit.mp4                video    Typography
+  44  Velocity Character Edit.mp4        video    Velocity
+  45  Velocity Edit.mp4                  video    Velocity
+  46  Velocity Reel Edit.mp4             video    Velocity
+  47  VFX Photo Edit.jpg                 photo    VFX
+  48  Vfx_Edit.mp4                       video    VFX
+  49  Vlog Edit.mp4                      video    Vlog
+  50  Aesthetic Edit.jpg                 photo    Aesthetic
+  51  Aesthetic Edit.mp4                 video    Aesthetic
+  52  Beat Sync Gaming Edit.mp4          video    Gaming
+  53  Character Edit..mp4                video    Character
+  54  Character Edit.mp4                 video    Character
+  55  Cinematic Edit.jpg                 photo    Cinematic
+  56  Cinematic Edit.mp4                 video    Cinematic
+  57  Color Correction.jpg               photo    Color
+  58  Color_grading.jpg                  photo    Color
+  59  Commercial Edit.mp4                video    Commercial
+  60  Commercial_Edit.mp4                video    Commercial
+  61  Highlights Edit.mp4                video    Highlights
+  62  Velocity Edit III.mp4              video    Velocity
+  63  4K Upscaling.mp4                   video    VFX
+  64  Story Edit.mp4                     video    Edit
+  65  3d Animation.mp4                   video    Animation
+  66  Girl _Edit.mp4                     video    Portrait
+  67  Reel Edit III.mp4                  video    Reel
+  68  Text Typography.mp4                video    Typography
+  69  Gaming Velocity Edit II.mp4        video    Gaming
+  70  Gaming 3D Velocity Edit.mp4        video    Gaming
+
+--------------------------------------------------------------------------------
+  NOTE:
+   • Ye saari files "All Projects" folder me hi rakhi hain.
+   • Project Gallery aur All Projects DONO section same folder use karte hain.
+   • File ka naam code me HU-BA-HU same hona chahiye (space/capital/dot sab).
+================================================================================

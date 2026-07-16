@@ -1,0 +1,35 @@
+================================================================================
+  LOGO & BACKGROUND  —  is folder ki kaun si file website me use ho rahi hai
+  Folder: "Logo  & Background"   (dhyaan: "Logo" aur "&" ke beech 2 SPACE hain)
+--------------------------------------------------------------------------------
+
+  FILE NAME                 USE HO RAHI?   KAHAN USE HUI (code me)
+  ------------------------  -------------  --------------------------------------
+  logo.jpeg                 HAAN (YES)     index.html line ~34 og:image,
+                                           line ~41 twitter:image,
+                                           line ~46 favicon (rel="icon"),
+                                           line ~47 apple-touch-icon,
+                                           + site.webmanifest me app icon
+  background.jpg            NAHI (unused)  code me kahin use nahi
+  background2.jpg           NAHI (unused)  code me kahin use nahi
+  logo background.jpg       NAHI (unused)  code me kahin use nahi
+  FRAME YOUR STORY.webp     NAHI (unused)  code me kahin use nahi
+  MY SERVICES.avif          NAHI (unused)  code me kahin use nahi
+  SOFTWARE & TOOLS.jpg      NAHI (unused)  code me kahin use nahi
+
+--------------------------------------------------------------------------------
+  ZAROORI BAAT:
+   • Sirf "logo.jpeg" hi is folder se DIRECTLY use ho rahi hai (favicon +
+     link preview + PWA icon ke liye).
+   • Baaki 6 files abhi website me use NAHI ho rahi.
+   • Hero / About / Services / Software section ke background images folder ki
+     file se NAHI aate — woh index.html ke ANDAR base64 code me embed hain:
+        - class="hero-photo"    -> hero background   (index.html line ~222)
+        - class="about-bg-img"  -> about background  (line ~614)
+        - class="about-dp"      -> about profile     (line ~617)
+        - class="services-bg"   -> services bg       (line ~655)
+        - class="software-bg"   -> software bg       (line ~725)
+     Inko badalne ke liye folder ki file nahi, index.html ka base64/src
+     badalna padta hai (guide: "Media Update\logo & background.txt" me KAAM 3).
+   • Nav bar ka "LAXTLINE" naam IMAGE nahi, TEXT hai (class="nav-logo-text").
+================================================================================

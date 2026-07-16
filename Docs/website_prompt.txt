@@ -1,0 +1,190 @@
+================================================================================
+   AI PROMPT — Aisi hi (same-to-same) website dobara banane ke liye
+================================================================================
+
+  Ye file kis liye hai:
+  Agar future me aap (ya koi aur) is jaisi EXACT same cinematic portfolio
+  website kisi bhi AI (ChatGPT, Claude, Gemini, etc.) se banwana chahte ho,
+  to neeche diya gaya PROMPT copy karke us AI ko de dena.
+
+  Kaise use karein:
+    1. "===== PROMPT START =====" se "===== PROMPT END =====" tak copy karo.
+    2. AI me paste karo.
+    3. AI aapko poori website (HTML + CSS + JS files) bana kar de dega.
+    4. Apni asli media (videos/photos) "All Projects/" folder me daal kar
+       gallery ke file-paths replace kar lena.
+
+  TIP: Apni branding chahiye to prompt me naam/colors/links badal lena
+       (jaise LAXTLINE ki jagah apna naam).
+
+
+================================================================================
+  ===== PROMPT START =====
+================================================================================
+
+  You are an expert front-end web developer. Build a complete, production-ready,
+  CINEMATIC SINGLE-PAGE PORTFOLIO WEBSITE for a professional video editor /
+  visual storyteller. Deliver clean, well-commented code that runs by simply
+  opening it in a browser. NO frameworks, NO libraries, NO build tools, NO npm —
+  use ONLY plain HTML5, CSS3 and Vanilla JavaScript (ES6+).
+
+  ------------------------------------------------------------------
+  1) CONCEPT
+  ------------------------------------------------------------------
+  - One long scrolling page with multiple sections.
+  - Heavy use of motion (animated hero, custom cursor, hover-to-play videos)
+    BUT it must stay fast and never crash — even with 50+ videos on the page.
+  - Brand name: LAXTLINE (styled as LAXT + LINE, with "LINE" in red accent).
+
+  ------------------------------------------------------------------
+  2) DESIGN / THEME
+  ------------------------------------------------------------------
+  - Dark cinematic theme. Define brand colors ONCE in CSS :root variables:
+        --black  #080808   (background)
+        --white  #f5f2ee   (text)
+        --red    #E8392A   (accent / highlights)
+  - Big, bold display typography. Use Google Fonts:
+        Bebas Neue  -> big display headings & logo
+        DM Sans     -> body text
+        Space Mono  -> small labels / mono accents
+  - Cinema/film motifs: letterbox bars, scan lines, frame corners, subtle grain,
+    scrolling marquee ribbons.
+  - Minimal, confident, premium layout. Fully responsive (desktop + mobile).
+
+  ------------------------------------------------------------------
+  3) FILE STRUCTURE (split cleanly, do NOT put everything in one file)
+  ------------------------------------------------------------------
+        index.html                -> structure + all sections + SEO meta
+        css/main.css              -> global styles (nav, hero, marquee, about,
+                                     services, software, contact, socials,
+                                     footer, responsive)
+        css/gallery.css           -> gallery grid + fullscreen viewer styles
+        js/01-cursor-init.js      -> creates the custom cursor (desktop only)
+        js/02-interactions.js     -> hero canvas, cursor motion, scroll reveal,
+                                     nav state, hamburger menu
+        js/03-gallery-config.js   -> small gallery config/marker
+        js/04-gallery-video.js    -> the video engine (see section 6)
+
+  ------------------------------------------------------------------
+  4) PAGE SECTIONS (in this exact scroll order)
+  ------------------------------------------------------------------
+    1.  HERO (#home)      - full-screen animated <canvas> background
+                            (floating particles + grid), big brand watermark
+                            "LAXTLINE", glows, letterbox bars, frame corners,
+                            headline + call-to-action button.
+    2.  MARQUEE           - two ribbons of skills scrolling in opposite
+                            directions (infinite loop).
+    3.  WORK (#work)      - featured project showcase cards (hover to play).
+    4.  ABOUT (#about)    - photo + bio: who LAXTLINE is + editing philosophy.
+    5.  SERVICES (#services) - the services offered (editing, VFX, color, etc.).
+    6.  SOFTWARE (#software) - tools used, grouped (3D & Design, Adobe Suite,
+                               Video & Color, AI & Upscaling).
+    7.  CONTACT (#contact)   - email, phone, location, availability +
+                               a WhatsApp "direct chat" button (no form).
+    8.  SOCIALS (#socials)   - row of platform buttons (Instagram, LinkedIn,
+                               Drive, Threads, X, Discord, SoundCloud, YouTube,
+                               GitHub, Snapchat, Blogger, etc.).
+    9.  ALL PROJECTS (#all-work) - the complete media gallery.
+    10. FOOTER            - text logo, copyright, quick links.
+
+  ------------------------------------------------------------------
+  5) SECTION-ENTRANCE ANIMATIONS (content reveals on scroll)
+  ------------------------------------------------------------------
+  - When a section scrolls INTO view, its content (heading, label, text, images,
+    buttons) animates in (fade + slide up), staggered one-by-one, then settles.
+  - It REPLAYS every time you scroll back into the section (not just once).
+  - Apply this to: HERO, ABOUT, SERVICES, SOFTWARE, CONTACT, SOCIALS.
+  - DO NOT animate the WORK and ALL PROJECTS galleries (so media never gets
+    delayed or hidden).
+  - Use an IntersectionObserver that adds a class on enter and removes it on
+    full exit. Use GPU-only properties (opacity + transform).
+  - Respect "prefers-reduced-motion" (show content instantly, no animation).
+  - Add a timed fallback that force-shows content so text can never get stuck
+    hidden if an observer misses.
+
+  ------------------------------------------------------------------
+  6) GALLERY SYSTEM (the core feature)
+  ------------------------------------------------------------------
+  - TWO gallery sections that both read media from ONE folder ("All Projects/"):
+        * "Project Gallery" (featured, ~14 items)
+        * "All Projects"    (full gallery, ~50+ items)
+  - Layout: CSS multi-column "masonry" — each card keeps its natural aspect
+    ratio (no cropping).
+  - Each card carries data-* attributes that tell a fullscreen viewer what to
+    open:  data-fs-src (file path), data-fs-type (video/photo),
+           data-fs-cat (category), data-fs-name (title).
+  - Playback:
+        * Desktop: hover a card -> the video plays WITH sound; mouse leaves
+          -> it stops.
+        * Mobile: video autoplays MUTED when ~70% on screen; tap to unmute.
+        * Browsers block unmuted autoplay, so quietly unmute on the user's
+          first click/tap/keypress.
+  - FULLSCREEN VIEWER (lightbox): clicking any card opens a fullscreen player
+    with play/pause, a seek bar, volume, mute, previous/next buttons, an item
+    counter, and keyboard shortcuts (Esc to close, <- / -> to navigate,
+    Space to play/pause).
+  - Add a graceful fallback for missing media files (show a placeholder instead
+    of breaking).
+
+  ------------------------------------------------------------------
+  7) PERFORMANCE ENGINEERING (must-have — this is the hard part)
+  ------------------------------------------------------------------
+  50+ videos on one page can freeze/crash a browser. Prevent it with:
+    - LAZY LOADING: load a video's source only when it comes within ~300px of
+      the viewport (not all at once on page load).
+    - MEMORY RELEASE (key fix): when a video scrolls far away (~1400px), RELEASE
+      its decoded buffer from memory; auto-reload it if the user scrolls back.
+      Keep only ~10-12 videos in memory at any time, never all of them.
+    - OFF-SCREEN PAUSE: stop the hero canvas + CSS animations when not visible
+      and when the browser tab is hidden (save CPU/GPU/battery).
+    - GPU-FRIENDLY CSS: use transform / will-change only where needed; use
+      layout containment (contain, content-visibility) to limit repaint cost.
+    - THROTTLED EVENTS: scroll/mouse handlers must be passive and
+      requestAnimationFrame-throttled.
+    - ASPECT-RATIO LOCK: set each card's height from the real media size so the
+      grid never "jumps" while loading.
+
+  ------------------------------------------------------------------
+  8) SEO, BRANDING & EXTRAS
+  ------------------------------------------------------------------
+  - <head> meta: description, keywords, author, robots.
+  - Open Graph + Twitter Card tags for rich link previews (WhatsApp, FB, X).
+  - A robots.txt and a sitemap.xml.
+  - A site.webmanifest so it is installable (PWA) with name, theme color, icon.
+  - Favicon + apple-touch-icon.
+  - Custom animated cursor on desktop (hide the default cursor).
+  - Use a clear placeholder domain (e.g. https://www.laxtline.com) for all
+    canonical/OG/sitemap URLs, with a note to replace it after hosting.
+
+  ------------------------------------------------------------------
+  9) BROWSER APIs TO USE
+  ------------------------------------------------------------------
+    - IntersectionObserver  (lazy load, scroll reveal, autoplay-on-scroll)
+    - requestAnimationFrame  (smooth canvas + cursor animation)
+    - HTML5 <video> API      (play/pause/seek/volume/mute)
+    - Canvas 2D API          (hero particle + grid background)
+
+  ------------------------------------------------------------------
+  10) DELIVERABLES & RULES
+  ------------------------------------------------------------------
+  - Output every file in full (index.html + the css/ and js/ files above).
+  - Code must run by just opening index.html (a local server is fine for video).
+  - Keep it accurate to this spec — do not add features not described here.
+  - Comment the tricky parts (memory release, fullscreen viewer, observers).
+  - Make it look premium and presentation/viva-ready.
+
+================================================================================
+  ===== PROMPT END =====
+================================================================================
+
+
+  TIP (Hinglish output): prompt ke end me ye line add kar do —
+       "Add short Hinglish (Hindi + English) comments in the code."
+
+  TIP (apni branding): LAXTLINE, colors (#080808 / #f5f2ee / #E8392A), fonts,
+       aur social links ko prompt me apne hisaab se badal lena.
+
+  TIP (real media): website banne ke baad apne videos/photos "All Projects/"
+       folder me daalo aur gallery cards ke data-fs-src paths update karo.
+
+================================================================================

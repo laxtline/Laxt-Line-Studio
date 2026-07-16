@@ -1,0 +1,91 @@
+================================================================================
+                    LAXTLINE — WEBSITE KAISE RUN KARE
+                   (How to run / open the website locally)
+================================================================================
+
+  Project type : Static website (HTML + CSS + JavaScript)
+  Main file    : index.html
+  Note         : Koi installation / build / npm ki zaroorat NAHI hai.
+
+
+================================================================================
+  SABSE TEZ TARIKA (Quick way) — bas double-click
+================================================================================
+
+  1. Project folder kholo.
+  2. "index.html" file par DOUBLE-CLICK karo.
+  3. Website aapke default browser (Chrome / Edge) me khul jayegi.
+
+  ✓ Ye 95% cheezein dikha dega (design, gallery, scroll, animations).
+
+  ⚠  LEKIN: is tarike me kuch browser videos ko apne-aap (autoplay) play
+     karne se rok dete hain (file:// security rule ki wajah se).
+     Agar videos hover/scroll par auto-play na hon, to neeche wala
+     "BEHTAR TARIKA" use karo.
+
+
+================================================================================
+  BEHTAR TARIKA (Recommended) — chhota local server
+================================================================================
+
+  Isse videos, autoplay aur sab kuch theek se chalta hai (jaisa live site par).
+  Aapke PC me Python pehle se hai (Python 3.14).
+
+  --- Step by step ---
+
+  1. Project folder kholo:
+        C:\SURYA\My_Projects\Portfolio_Website(With Real Media)
+
+  2. Us folder me address bar (upar wala path bar) me "cmd" type karke
+     Enter dabao — Command Prompt usi folder me khul jayega.
+        (Ya: Start menu -> "cmd" -> phir niche wali command:
+              cd "C:\SURYA\My_Projects\Portfolio_Website(With Real Media)")
+
+  3. Ye command type karo aur Enter dabao:
+
+        python -m http.server 8000
+
+  4. Browser kholo aur is address par jao:
+
+        http://localhost:8000
+
+  5. Website pure features ke saath chalegi. 🎬
+
+  --- Band (stop) kaise kare ---
+     Command Prompt window me  Ctrl + C  dabao, ya window close kar do.
+
+
+================================================================================
+  CHHOTI-MOTI DIKKAT (Troubleshooting)
+================================================================================
+
+  • "python is not recognized" aaye to:
+        - "py -m http.server 8000"  try karo, ya
+        - Microsoft Store / python.org se Python install karo
+          (install karte waqt "Add Python to PATH" tick karna).
+
+  • Port 8000 busy ho (error de) to dusra port use karo:
+        python -m http.server 5500
+     phir browser me:  http://localhost:5500
+
+  • Videos phir bhi na chale:
+        - Page hard-refresh karo:  Ctrl + F5
+        - Browser ki sound/autoplay permission "Allow" karo.
+
+  • Mobile par test karna ho (same WiFi):
+        - Server chalu rakho, PC ka IP nikalo:  ipconfig  (IPv4 Address)
+        - Phone browser me:  http://<PC-ka-IP>:8000
+          (jaise  http://192.168.1.5:8000)
+
+
+================================================================================
+  YAAD RAKHO
+================================================================================
+
+  • Live host (Netlify / Vercel / GitHub Pages) par dalte waqt poora folder
+    upload karo aur structure same rakho.
+  • Koi bhi change ke baad browser hard-refresh karo:  Ctrl + F5
+
+================================================================================
+  © 2025 LAXTLINE Studio. All Rights Reserved.
+================================================================================

@@ -1,0 +1,311 @@
+================================================================================
+                        LAXTLINE — PROJECT DOCUMENTATION
+                     Visual Storyteller & Video Editor Portfolio
+================================================================================
+
+  Document type : Full project documentation
+  Project name  : LAXTLINE Portfolio Website
+  Owner         : LAXTLINE Studio (Suryakant Pradhan)
+  Location       : Bhubaneswar, Odisha, India
+  Project folder: C:\SURYA\My_Projects\edit
+  Last updated  : 2026-06-19
+
+
+================================================================================
+  1. PROJECT OVERVIEW
+================================================================================
+
+  LAXTLINE is a cinematic, single-page (one-page scroll) portfolio website for a
+  professional video editor & visual storyteller. It showcases video edits, VFX,
+  color grading, gaming montages, photo edits, and design work through an
+  interactive, animation-rich gallery.
+
+  The whole site is ONE scrolling page with multiple sections, plus a fullscreen
+  media viewer (lightbox) that opens when you click any project.
+
+  Key idea: heavy use of motion (animated hero canvas, custom cursor, hover-to-
+  play videos) but kept FAST through smart loading and memory management.
+
+
+================================================================================
+  2. TECH STACK (what was used to build it)
+================================================================================
+
+  • HTML5            — page structure & content (semantic markup)
+  • CSS3             — all styling & animations
+                       (custom properties, flexbox, grid, CSS multi-column
+                        masonry, @keyframes, backdrop-filter, content-visibility)
+  • Vanilla JavaScript (ES6+) — all interactivity
+                       NO frameworks, NO libraries, NO build tools, NO npm.
+                       Just plain .js files the browser runs directly.
+  • Browser APIs used:
+       - IntersectionObserver  (lazy load, scroll reveal, autoplay on scroll)
+       - requestAnimationFrame  (smooth canvas + cursor animation)
+       - HTML5 <video> API      (play/pause/seek/volume/mute control)
+       - Canvas 2D API          (hero particle + grid background)
+  • Google Fonts:
+       - Bebas Neue   (big display headings & logo)
+       - DM Sans      (body text)
+       - Space Mono   (labels, mono accents)
+
+  Why no framework? The site is static and self-contained, so it loads instantly,
+  works on any host, and needs no maintenance/build step.
+
+
+================================================================================
+  3. HOW THE WEBSITE WAS BUILT (structure & approach)
+================================================================================
+
+  Originally the entire website was written in ONE single file
+  (SURYA_FX.com.html) — HTML, CSS, and JS all together.
+
+  It was later refactored into a professional, separated structure:
+       - HTML  ->  index.html
+       - CSS   ->  css/main.css + css/gallery.css
+       - JS    ->  js/01..04 (split by responsibility)
+
+  This split was done WITHOUT changing how the website looks or behaves
+  (verified byte-for-byte). The original single file is kept as a backup.
+
+  Design language:
+       - Dark cinematic theme (near-black background #080808)
+       - Brand red accent (#E8392A) used for highlights
+       - Big bold display typography (Bebas Neue)
+       - Film/cinema motifs: letterbox bars, scan lines, frame corners,
+         grain, marquee ribbons
+
+
+================================================================================
+  4. FOLDER & FILE STRUCTURE (full map)
+================================================================================
+
+  edit/
+  │
+  ├── index.html                 MAIN file — the website that goes live.
+  │                              (~1831 lines; includes SEO meta + all sections
+  │                               + base64-embedded section background images +
+  │                               two inline <style>/<script> blocks for the
+  │                               section-entrance animations, see section 5b)
+  │
+  ├── css/
+  │   ├── main.css               Global styles: variables, nav, hero, marquee,
+  │   │                          work, about, services, software, contact,
+  │   │                          socials, footer, responsive  (~1351 lines)
+  │   └── gallery.css            Gallery grid + fullscreen viewer styles
+  │                              (~641 lines)
+  │
+  ├── js/
+  │   ├── 01-cursor-init.js      Creates custom cursor (desktop only)  (~16 lines)
+  │   ├── 02-interactions.js     Hero canvas, cursor motion, scroll reveal,
+  │   │                          nav state, hamburger menu  (~278 lines)
+  │   ├── 03-gallery-config.js   Gallery status marker  (~11 lines)
+  │   └── 04-gallery-video.js    Video engine: hover/touch play, lazy-load +
+  │                              memory release, ratio sizing, fullscreen
+  │                              viewer, missing-file fallback  (~1004 lines)
+  │
+  ├── All Projects/              ALL gallery media — 69 files (~604 MB)
+  │                              51 videos (.mp4) + 18 images (.jpg/.webp)
+  │                              Used by BOTH gallery sections.
+  │
+  ├── Logo  & Background/         Logo + image assets.
+  │                              Only logo.jpeg is used directly in code;
+  │                              other section backgrounds are base64 inside HTML.
+  │
+  ├── Media Update/              Guides for editing media/logo in future:
+  │   ├── all project.txt        How to add/delete/replace gallery media
+  │   └── logo & background.txt   How to change the logo / backgrounds
+  │
+  ├── robots.txt                 Search-engine crawl rules
+  ├── sitemap.xml                URL list for search engines
+  ├── site.webmanifest           PWA / "Add to Home Screen" metadata
+  ├── README.md                  Developer-style project readme
+  ├── DOCUMENTATION.txt          THIS file
+  │
+  └── SURYA_FX.com.html          Original all-in-one version (kept as backup)
+
+
+================================================================================
+  5. PAGE SECTIONS (in scroll order)
+================================================================================
+
+  1. HERO (#home)        Animated canvas background (particles + grid), brand
+                         watermark "LAXTLINE", glows, letterbox bars, frame
+                         corners, headline + call-to-action.
+  2. MARQUEE             Two ribbons of skills scrolling in opposite directions.
+  3. WORK (#work)        Featured project showcase cards (hover to play).
+  4. ABOUT (#about)      Photo + bio: who LAXTLINE is and the editing philosophy.
+  5. SERVICES (#services) The services offered (editing, VFX, color, etc.).
+  6. SOFTWARE (#software) Tools used — grouped (3D & Design, Adobe Suite,
+                         Video & Color, AI & Upscaling).
+  7. CONTACT (#contact)  Email, phone, location, availability + WhatsApp button
+                         (direct chat — chosen over email form on purpose).
+  8. SOCIALS (#socials)  Buttons: Instagram, LinkedIn, Project Drive, Threads,
+                         X (Twitter), Discord, SoundCloud, YouTube, GitHub,
+                         LAXTLINE Drive, Snapchat, Blogger.
+  9. ALL PROJECTS (#all-work)  The complete gallery — every project.
+  10. FOOTER             Logo, copyright, quick links.
+
+  + FULLSCREEN VIEWER (lightbox): opens on click; play/pause, seek bar, volume,
+    mute, previous/next, keyboard shortcuts (Esc / ← / → / Space), item counter.
+
+
+================================================================================
+  5b. SECTION-ENTRANCE ANIMATIONS (content reveals on scroll)
+================================================================================
+
+  Every time you scroll a section INTO view, its content (heading, label, text,
+  images, logo, details, buttons) animates in — it slides/fades up into place,
+  then settles to normal after about 2-3 seconds. Scroll away and back, and the
+  same section animates again (it replays on each entry, not just once).
+
+  Which sections animate:
+       HERO (#home), ABOUT (#about), SERVICES (#services), SOFTWARE (#software),
+       CONTACT (#contact), SOCIALS (#socials).
+
+  Which sections are LEFT ALONE (no entrance effect — intentional):
+       PROJECT GALLERY (#work) and ALL PROJECTS (#all-work). These were
+       deliberately excluded so the gallery media is never delayed or hidden.
+
+  Where it lives (all self-contained inside index.html — no other file touched):
+       • A small <style> block defines the .fxe / .fxe-in classes
+         (GPU-only opacity + transform, so it stays smooth).
+       • A small <script> (id="fxe-section-anim-js") tags the content elements,
+         then uses an IntersectionObserver to add .fxe-in when a section enters
+         and remove it when the section fully leaves (that's what makes it
+         replay). A staggered transition-delay makes items appear one-by-one.
+
+  Safety built in:
+       • Respects "prefers-reduced-motion" — users who disable motion see no
+         animation (content is shown fully, immediately).
+       • A timed fallback force-shows any content if an observer ever misses, so
+         text can never get "stuck" hidden.
+
+  NOTE: this is SEPARATE from the older scroll-reveal (.reveal / .reveal-left in
+  js/02-interactions.js), which fires once. The new .fxe system replays and is
+  the one responsible for the per-section content entrances described above.
+
+
+================================================================================
+  6. GALLERY SYSTEM (the heart of the site)
+================================================================================
+
+  There are TWO gallery sections, both reading media from ONE folder:
+
+    • "Project Gallery" (upper)  -> HTML id="projectGalleryGrid"
+                                    video ids: pg01, pg02 ...  (14 featured items)
+    • "ALL PROJECTS" (lower)     -> HTML id="galleryGrid"
+                                    video ids: gv3000, gv3001 ... (51 items)
+
+  Layout : CSS multi-column "masonry" — cards keep their natural aspect ratio.
+  Media  : each card has data-* attributes telling the viewer what to open:
+             data-fs-src   = file path
+             data-fs-type  = video / photo
+             data-fs-cat   = category label
+             data-fs-name  = title
+
+  Playback behaviour:
+    • Desktop : hover a card -> video plays WITH sound; mouse leaves -> stops.
+    • Mobile  : video autoplays muted when ~70% on screen; tap to unmute.
+    • Browsers block unmuted autoplay, so the site quietly unmutes on the user's
+      first click/tap/keypress.
+
+
+================================================================================
+  7. PERFORMANCE ENGINEERING (why it stays smooth with 600 MB of video)
+================================================================================
+
+  The biggest technical challenge: 51+ videos on one page can crash a browser.
+  Solved with several techniques:
+
+  • LAZY LOADING — a video's source is downloaded only when it comes within
+    ~300px of the viewport (not all at once on page load).
+
+  • MEMORY RELEASE (key fix) — when a video scrolls more than ~1400px away, its
+    decoded buffer is RELEASED from memory and auto-reloaded if you scroll back.
+    This stops the page from freezing/crashing near the bottom. At any time only
+    ~10-12 videos sit in memory instead of all 51.
+
+  • OFF-SCREEN PAUSE — the hero canvas animation and CSS animations stop when not
+    visible and when the browser tab is hidden (saves CPU/GPU/battery).
+
+  • GPU-FRIENDLY — transforms/will-change used only where needed; layout
+    containment (contain, content-visibility) limits repaint cost.
+
+  • THROTTLED EVENTS — scroll/mouse handlers are passive and rAF-throttled.
+
+  • ASPECT-RATIO LOCK — each card's height is set from the real media size, so
+    the grid never "jumps" while loading.
+
+
+================================================================================
+  8. SEO & SHAREABILITY
+================================================================================
+
+  • <head> meta: description, keywords, author, robots.
+  • Open Graph + Twitter Card tags -> nice link previews on WhatsApp, Facebook,
+    LinkedIn, X (title + description + image).
+  • robots.txt  -> tells search engines they may index the site + sitemap path.
+  • sitemap.xml -> lists homepage + key section anchors.
+  • site.webmanifest -> installable as an app (name, theme color, icon).
+  • Favicon + apple-touch-icon -> from Logo  & Background/logo.jpeg.
+
+  NOTE: SEO files use a placeholder domain https://www.laxtline.com — replace it
+  with the real domain after hosting (in robots.txt, sitemap.xml, and the
+  canonical/og/twitter tags in index.html).
+
+
+================================================================================
+  9. BRANDING
+================================================================================
+
+  • Visible brand name: LAXTLINE (nav, hero watermark, footer, page title).
+    Styled as LAXT + LINE, with "LINE" in brand red (.logo-accent).
+  • The nav/footer logo is TEXT (not an image) — easy to edit.
+  • Brand colors (defined once in css/main.css :root):
+       --black  #080808   (background)
+       --white  #f5f2ee   (text)
+       --red    #E8392A   (accent)
+  • Real social handles, email, phone, and Drive links are intentionally kept
+    unchanged so the live links keep working.
+
+
+================================================================================
+  10. HOW TO RUN / DEPLOY
+================================================================================
+
+  Run locally:
+    - Just open index.html in a browser, OR
+    - Run a tiny server (better for video autoplay):
+         python -m http.server 8000      (then open http://localhost:8000)
+
+  Deploy live:
+    - Static host: Netlify, Vercel, GitHub Pages, Cloudflare Pages, or any
+      normal web hosting. Upload the whole folder, keep the structure intact.
+    - About storage: ~604 MB is mostly video. To shrink it, compress videos
+      (HandBrake) or host videos on YouTube/Cloudinary and embed them.
+
+
+================================================================================
+  11. HOW TO EDIT IN FUTURE (quick pointers)
+================================================================================
+
+  • Change a color/spacing  -> css/main.css  (:root variables at top)
+  • Change gallery styling   -> css/gallery.css
+  • Change behaviour         -> the matching file in js/
+  • Add/remove a project     -> see  Media Update/all project.txt
+  • Change logo/backgrounds  -> see  Media Update/logo & background.txt
+  • Always edit BOTH index.html and SURYA_FX.com.html to stay consistent.
+  • After any change: hard refresh the browser (Ctrl + F5) to test.
+
+
+================================================================================
+  12. CONTACT
+================================================================================
+
+  Email    : suryakant321pradhan@gmail.com
+  Phone    : +91 78480 03467
+  Location : Bhubaneswar, Odisha, India
+
+================================================================================
+  © 2025 LAXTLINE Studio. All Rights Reserved.
+================================================================================

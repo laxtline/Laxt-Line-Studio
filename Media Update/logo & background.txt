@@ -1,0 +1,134 @@
+================================================================================
+  CHANGES.TXT  —  "Logo  & Background" folder ka guide
+  (Logo aur background images kaise change karein)
+================================================================================
+
+  Folder location:
+      C:\SURYA\My_Projects\edit\Logo  & Background
+      (Dhyan do: "Logo" aur "&" ke beech me 2 SPACE hain — naam aisa hi hai.)
+
+  Is folder me kya files hain:
+      • logo.jpeg               -> Brand logo (favicon + link preview ke liye)
+      • logo background.jpg     -> (abhi website me direct use nahi ho rahi)
+      • background.jpg          -> (abhi website me direct use nahi ho rahi)
+      • background2.jpg         -> (abhi website me direct use nahi ho rahi)
+      • FRAME YOUR STORY.webp   -> (abhi website me direct use nahi ho rahi)
+      • MY SERVICES.avif        -> (abhi website me direct use nahi ho rahi)
+      • SOFTWARE & TOOLS.jpg     -> (abhi website me direct use nahi ho rahi)
+
+
+--------------------------------------------------------------------------------
+  BAHUT ZAROORI BAAT — PEHLE YE SAMJHO
+--------------------------------------------------------------------------------
+
+  Is folder me sirf "logo.jpeg" hi website ke code me DIRECTLY use hoti hai.
+
+  Baaki saari background/section images (hero ki background, about ki photo,
+  services, software wali image, etc.) folder ki file se NAHI aati —
+  woh sab index.html ke ANDAR "base64" code ke roop me seedhe embed hain
+  (matlab image ka data text ke form me HTML ke andar hi pada hai).
+
+  Isliye:
+    - Agar tum folder ki "background.jpg" badaloge to website pe kuchh NAHI badlega,
+      kyunki website woh file use hi nahi kar rahi.
+    - Background/section image badalne ke liye index.html ke andar wali base64
+      image replace karni padti hai (ye thoda technical kaam hai — niche dekho).
+
+
+--------------------------------------------------------------------------------
+  "logo.jpeg" KAHAN-KAHAN USE HOTA HAI?
+--------------------------------------------------------------------------------
+
+  index.html me 4 jagah (line number aprox):
+
+    Line ~34 :  <meta property="og:image" ...Logo  & Background/logo.jpeg">
+                -> WhatsApp/Facebook/LinkedIn pe link share karne par dikhne wali image
+    Line ~41 :  <meta name="twitter:image" ...logo.jpeg">
+                -> X (Twitter) pe link preview image
+    Line ~46 :  <link rel="icon" ...logo.jpeg">
+                -> Browser tab ka chhota icon (favicon)
+    Line ~47 :  <link rel="apple-touch-icon" ...logo.jpeg">
+                -> iPhone "Add to Home Screen" icon
+
+  Aur ek jagah:
+    site.webmanifest  ->  "src": "Logo  & Background/logo.jpeg"
+                -> App icon (PWA / mobile home screen)
+
+  NOTE: Nav bar me jo "LAXTLINE" dikhta hai woh IMAGE nahi, TEXT hai
+        (index.html me class="nav-logo-text"). Use badalne ke liye image nahi,
+        text badalna padta hai.
+
+
+--------------------------------------------------------------------------------
+  KAAM 1 :  LOGO BADALNA (sabse aasaan tareeka)
+--------------------------------------------------------------------------------
+
+  Sabse simple:
+    Step 1: Apna naya logo bilkul isi naam se save karo -> logo.jpeg
+    Step 2: Is folder me purani "logo.jpeg" ko us nayi file se REPLACE kar do:
+            C:\SURYA\My_Projects\edit\Logo  & Background\logo.jpeg
+    Step 3: Bas! Code me kuchh badalne ki zaroorat nahi. Favicon + link preview
+            sab apne aap naya logo le lenge.
+    Step 4: Browser me Ctrl + F5 (hard refresh) karo. (Favicon kabhi-kabhi cache
+            ki wajah se thodi der baad update hota hai — normal hai.)
+
+  Agar naye logo ka naam ALAG rakhna hai (jaise mylogo.png):
+    Step 1: File folder me daalo.
+    Step 2: index.html me upar wali 4 line me "Logo  & Background/logo.jpeg"
+            ki jagah "Logo  & Background/mylogo.png" likho.
+    Step 3: site.webmanifest me bhi "src" wahi naya naam karo.
+    Step 4: SURYA_FX.com.html (backup) me bhi 4 jagah same badlo.
+
+  TIP: Logo ke liye square image (jaise 512x512) sabse best dikhti hai favicon me.
+
+
+--------------------------------------------------------------------------------
+  KAAM 2 :  NAV BAR KA "LAXTLINE" NAAM BADALNA (ye text hai, image nahi)
+--------------------------------------------------------------------------------
+
+  index.html me search karo:  nav-logo-text
+    <span class="nav-logo-text">LAXT<span class="logo-accent">LINE</span></span>
+  Yahan "LAXT" aur "LINE" ko apne naam se badal do.
+  Footer me bhi same: search karo "footer-logo".
+  (Aur SURYA_FX.com.html backup me bhi same badalna.)
+
+
+--------------------------------------------------------------------------------
+  KAAM 3 :  HERO / SECTION KA BACKGROUND IMAGE BADALNA (advanced)
+--------------------------------------------------------------------------------
+
+  Ye images base64 ke roop me index.html ke andar embed hain. Inko folder ki
+  file se nahi badal sakte. Badalne ke 2 tareeke:
+
+  Tareeka A (file se link karna — saaf tareeka):
+    Step 1: Nayi image is folder me daalo, jaise:  new-hero.jpg
+    Step 2: index.html me us section ka <img> dhundo. Inke class names:
+              - class="hero-photo"      -> hero ki background photo
+              - class="about-bg-img"    -> about section background
+              - class="about-dp"        -> about ki profile/display photo
+              - class="services-bg"     -> services section background
+              - class="software-bg"     -> software & tools background
+    Step 3: Us tag me bahut lamba  src="data:image/...."  hota hai.
+            Use poora hata kar likho:
+              src="Logo  & Background/new-hero.jpg"
+    Step 4: Save, backup file me bhi same, phir Ctrl+F5 se check.
+
+  Tareeka B (base64 hi replace karna): technical hai, recommend nahi —
+    Tareeka A use karo.
+
+
+--------------------------------------------------------------------------------
+  ZAROORI YAAD RAKHNE WALI BAATEIN
+--------------------------------------------------------------------------------
+
+  • Logo badalne ka sabse easy tareeka = nayi file ko "logo.jpeg" naam se replace.
+  • Folder ka naam "Logo  & Background" (2 space) waisa hi rehne do — badla to
+    code me 5+ jagah path tootega.
+  • logo.jpeg ke alawa baaki files abhi use nahi ho rahi — unhe delete karne se
+    website pe asar nahi padega (par confirm pehle kar lena).
+  • Change hamesha DONO me: index.html AUR SURYA_FX.com.html (+ logo ke liye
+    site.webmanifest bhi).
+  • Change ke baad browser me Ctrl + F5 (hard refresh) karo.
+  • Bada change se pehle file ki ek copy bana lena safe rehta hai.
+
+================================================================================

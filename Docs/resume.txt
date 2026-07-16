@@ -1,0 +1,88 @@
+================================================================================
+  LAXTLINE — PORTFOLIO WEBSITE  |  Resume-Ready Project Descriptions
+  (Copy the version that fits your resume / LinkedIn / portfolio)
+================================================================================
+
+
+--------------------------------------------------------------------------------
+  1) ONE-LINER  (for a resume project header / portfolio title)
+--------------------------------------------------------------------------------
+
+  LAXTLINE — A cinematic, single-page portfolio website with an interactive
+  video gallery, built using HTML, CSS and Vanilla JavaScript.
+
+
+--------------------------------------------------------------------------------
+  2) SHORT SUMMARY  (2-3 lines — ideal for a resume Projects section)
+--------------------------------------------------------------------------------
+
+  Designed and developed LAXTLINE, a responsive single-page portfolio website
+  for a video editor, featuring an animated hero, custom cursor and an
+  interactive video gallery with a fullscreen viewer. Built with HTML5, CSS3 and
+  Vanilla JavaScript, and engineered a lazy-loading + memory-management system to
+  smoothly handle 50+ videos without performance loss.
+
+
+--------------------------------------------------------------------------------
+  3) RESUME BULLET POINTS  (drop straight under the project name)
+--------------------------------------------------------------------------------
+
+  • Built a responsive, single-page portfolio website from scratch using HTML5,
+    CSS3 and Vanilla JavaScript (no frameworks).
+  • Developed an interactive video gallery with hover-to-play previews and a
+    fullscreen viewer offering play/pause, seek, volume and keyboard controls.
+  • Engineered a lazy-loading and memory-release system that keeps the page fast
+    and crash-free while displaying 50+ videos (~600 MB of media).
+  • Implemented smooth UI animations (canvas hero, custom cursor, scroll reveals)
+    while maintaining performance via GPU-friendly CSS and throttled events.
+  • Added SEO optimisation (meta tags, Open Graph, sitemap, robots.txt) and a PWA
+    web manifest for better reach and shareability.
+  • Refactored a single-file codebase into a clean, documented HTML/CSS/JS
+    structure for maintainability and scalability.
+
+
+--------------------------------------------------------------------------------
+  4) LINKEDIN / PORTFOLIO PARAGRAPH  (slightly more descriptive)
+--------------------------------------------------------------------------------
+
+  LAXTLINE is a cinematic single-page portfolio website I designed and developed
+  for a professional video editor. The site showcases video edits, VFX and photo
+  work through an animation-rich, fully responsive interface with an interactive
+  gallery and a custom fullscreen media viewer. Built entirely with HTML5, CSS3
+  and Vanilla JavaScript, it includes a smart lazy-loading and memory-management
+  system that allows 50+ videos to play smoothly without lag or crashes, along
+  with SEO optimisation, social link previews and a PWA-ready setup. The project
+  demonstrates strong front-end development, performance optimisation and clean,
+  maintainable code.
+
+
+--------------------------------------------------------------------------------
+  5) SKILLS / TECH TAGS  (for a resume skills line or project tags)
+--------------------------------------------------------------------------------
+
+  HTML5 · CSS3 · JavaScript (ES6) · Responsive Design · DOM Manipulation ·
+  IntersectionObserver API · HTML5 Video API · Canvas API · Web Performance
+  Optimization · Lazy Loading · SEO · Open Graph · PWA (Web Manifest) ·
+  UI/UX · Git-friendly Project Structure
+
+
+--------------------------------------------------------------------------------
+  6) KEY HIGHLIGHTS  (quick stats / impact — good for portfolio cards)
+--------------------------------------------------------------------------------
+
+  • 100% custom-coded — no frameworks or templates
+  • 50+ videos handled smoothly via memory-release optimisation
+  • Fully responsive across desktop, tablet and mobile
+  • SEO-ready + shareable link previews + installable (PWA)
+  • Clean, documented, scalable codebase
+
+
+--------------------------------------------------------------------------------
+  TIP
+--------------------------------------------------------------------------------
+
+  • For a resume: use Section 2 (summary) + 2-4 bullets from Section 3.
+  • For LinkedIn "Projects": use Section 4 paragraph.
+  • Add a live link + GitHub link when available.
+
+================================================================================

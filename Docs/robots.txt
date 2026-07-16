@@ -1,0 +1,21 @@
+# ============================================================
+#  robots.txt — LAXTLINE Portfolio
+#  Tells search-engine crawlers (Google, Bing, etc.) what they
+#  are allowed to crawl and where to find the sitemap.
+#
+#  IMPORTANT: replace "https://www.laxtline.com" below with your
+#  real domain once the site is hosted live.
+# ============================================================
+
+# Allow every crawler to index the whole site
+User-agent: *
+Allow: /
+
+# Plain-text source notes are not web pages — keep them out of search results
+Disallow: /All%20Projects.txt
+Disallow: /Logo%20%20&%20Background.txt
+Disallow: /Project%20Gallery.txt
+Disallow: /SURYA_FX.com.html
+
+# Location of the XML sitemap (helps crawlers discover every page)
+Sitemap: https://www.laxtline.com/sitemap.xml

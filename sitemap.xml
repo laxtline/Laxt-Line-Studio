@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+   sitemap.xml — LAXTLINE Portfolio
+   Lists the site's URLs so search engines can crawl them.
+   This is a single-page site, so the homepage is the main URL;
+   the in-page sections are listed as anchor links for reference.
+
+   IMPORTANT: replace "https://www.laxtline.com" with your real
+   domain, and update <lastmod> whenever you change the site.
+  ============================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage (primary page) -->
+  <url>
+    <loc>https://www.laxtline.com/</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Key in-page sections (anchors on the same single page) -->
+  <url>
+    <loc>https://www.laxtline.com/#work</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#all-work</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#about</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#services</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#software</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#contact</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.laxtline.com/#socials</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
