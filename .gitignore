@@ -4,3 +4,6 @@
 .vercel/
 Thumbs.db
 desktop.ini
+
+# Offline-only documentation — keep local, never deploy/push
+Docs/
