@@ -16,8 +16,11 @@
    ===================================================================== */
 
 // ===== HERO CANVAS ANIMATION — OPTIMISED =====
+// Guard: if #heroBg is ever absent, getContext would throw and take down the
+// cursor, scroll-reveal and nav handlers below with it. Bail out of just the
+// canvas feature instead.
 const canvas = document.getElementById('heroBg');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 let W, H, particles = [], lines = [];
 // PERF: use offscreen canvas for grid (draw once, blit every frame)
 let gridCanvas = null, gridCtx = null;
@@ -36,6 +39,7 @@ function buildGridCache(){
 }
 
 function resizeCanvas(){
+  if(!canvas) return;
   W = canvas.width = canvas.offsetWidth;
   H = canvas.height = canvas.offsetHeight;
   buildGridCache();
@@ -108,7 +112,7 @@ for(let i=0;i<6;i++) lines.push(new GridLine(i%2===0)); // 6 lines (was 8)
 
 // PERF: pause canvas when hero out of view
 let canvasPaused = false;
-const canvasSection = canvas.closest('section') || canvas.parentElement;
+const canvasSection = canvas ? (canvas.closest('section') || canvas.parentElement) : null;
 if(canvasSection && 'IntersectionObserver' in window){
   const canvasObs = new IntersectionObserver(entries=>{
     canvasPaused = !entries[0].isIntersecting;
@@ -119,6 +123,7 @@ if(canvasSection && 'IntersectionObserver' in window){
 document.addEventListener('visibilitychange',()=>{ canvasPaused = document.hidden; },{passive:true});
 
 function animateCanvas(){
+  if(!ctx) return;
   if(!canvasPaused){
     ctx.clearRect(0,0,W,H);
     // PERF: blit pre-rendered grid from offscreen canvas (zero recalc)

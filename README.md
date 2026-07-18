@@ -126,8 +126,8 @@ Then open <http://localhost:8000>.
 You can host these files on any static host — **GitHub Pages, Netlify, Vercel, Cloudflare Pages**, or
 normal web hosting. Just upload the whole `edit/` folder contents (keep the folder layout intact).
 
-> **⚠️ One thing to update before/after going live:** the SEO files use a placeholder domain
-> `https://www.laxtline.com`. Replace it with your real domain in **three places**:
+> **⚠️ One thing to update if your domain changes:** the SEO files currently use the Vercel domain
+> `https://laxt-line-studio.vercel.app`. If you move to a custom domain, replace it in **three places**:
 > 1. `robots.txt` → the `Sitemap:` line
 > 2. `sitemap.xml` → every `<loc>` URL
 > 3. `index.html` → the `canonical`, `og:url`, `og:image` and `twitter:image` tags

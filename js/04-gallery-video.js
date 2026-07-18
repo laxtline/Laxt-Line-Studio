@@ -38,6 +38,13 @@
 
 const isTouch = () => window.matchMedia('(hover:none)').matches;
 
+// Escape user-controlled text (media filenames/categories) before it goes into
+// innerHTML. Missing-file placeholders below build markup from dataset values,
+// which originate from CDN filenames — a crafted name could otherwise inject HTML.
+const galEsc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
 // ══ BLACK BAR FIX — force cover on every video after metadata loads ══
 function fixVideoCover(video) {
   const vw = video.videoWidth, vh = video.videoHeight;
@@ -345,6 +352,10 @@ function detectImageRatio(img) {
 // Far offscreen  → release the buffer so memory does not grow unbounded.
 // This is what stops the page from crashing / freezing once dozens of videos
 // have been scrolled past (each decoded video otherwise stays resident forever).
+// Persistent lazy-load observers — created once, reused across re-renders so
+// dynamically injected cards can be wired without leaking observers.
+let _lazyLoadObs = null, _lazyKeepObs = null;
+
 function setupLazyLoad(selector) {
   if (!('IntersectionObserver' in window)) {
     // Fallback: no IntersectionObserver — load everything immediately
@@ -395,21 +406,26 @@ function setupLazyLoad(selector) {
   }
 
   // Load when within 300px of the viewport; release when more than ~1400px away.
-  const loadObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) loadVid(e.target); });
-  }, { rootMargin: '300px' });
-  const keepObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (!e.isIntersecting) unloadVid(e.target); });
-  }, { rootMargin: '1400px' });
+  // Observers are created once and reused so re-renders don't stack observers.
+  if (!_lazyLoadObs) {
+    _lazyLoadObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) loadVid(e.target); });
+    }, { rootMargin: '300px' });
+    _lazyKeepObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (!e.isIntersecting) unloadVid(e.target); });
+    }, { rootMargin: '1400px' });
+  }
 
   document.querySelectorAll(selector).forEach(v => {
+    if (v._lazyWired) return;          // already observed (survives re-render)
+    v._lazyWired = true;
     // Snapshot the source URLs up-front so a video can always be reloaded,
     // even after another code path (hover/click) deletes its data-src.
     v.querySelectorAll('source[data-src]').forEach(s => {
       if (!s.dataset.savedSrc) s.dataset.savedSrc = s.dataset.src;
     });
-    loadObs.observe(v);
-    keepObs.observe(v);
+    _lazyLoadObs.observe(v);
+    _lazyKeepObs.observe(v);
   });
 }
 
@@ -609,7 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;z-index:1;';
         const name = item.dataset.fsName || item.querySelector('.gal-name')?.textContent || 'Video';
         const cat = item.dataset.fsCat || item.querySelector('.gal-cat')?.textContent || '';
-        ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><polygon points="5,3 19,12 5,21" fill="rgba(232,57,42,0.15)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${cat}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${name}</span>`;
+        ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><polygon points="5,3 19,12 5,21" fill="rgba(232,57,42,0.15)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${galEsc(cat)}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${galEsc(name)}</span>`;
         wrap.appendChild(ph);
       }
       // Show name/cat in bottom bar always (not just on hover)
@@ -632,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;z-index:1;';
       const name = item.dataset.fsName || item.querySelector('.gal-name')?.textContent || 'Image';
       const cat = item.dataset.fsCat || item.querySelector('.gal-cat')?.textContent || '';
-      ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><rect x="3" y="3" width="18" height="18" rx="2" fill="rgba(232,57,42,0.1)"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(232,57,42,0.5)"/><polyline points="21,15 16,10 5,21" stroke="rgba(232,57,42,0.5)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${cat}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${name}</span>`;
+      ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><rect x="3" y="3" width="18" height="18" rx="2" fill="rgba(232,57,42,0.1)"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(232,57,42,0.5)"/><polyline points="21,15 16,10 5,21" stroke="rgba(232,57,42,0.5)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${galEsc(cat)}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${galEsc(name)}</span>`;
       wrap.appendChild(ph);
     });
   });
@@ -700,6 +716,145 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// ══════════════════════════════════════════════════════════════
+//  RE-INIT — wire up cards injected dynamically by the media engine
+//  (js/05-media-engine.js). Idempotent: every helper below skips a
+//  card it has already wired, so this is safe to call after every
+//  re-render. Mirrors the per-card setup in the DOMContentLoaded init.
+// ══════════════════════════════════════════════════════════════
+// Detach a grid's videos from the singleton observers before the media engine
+// clears the grid, so removed <video> nodes can be garbage-collected instead of
+// being retained by loadObs/keepObs/mobObs across every re-render.
+window.unwireGallery = function unwireGallery(grid) {
+  if (!grid) return;
+  grid.querySelectorAll('video.gal-video').forEach(v => {
+    try { if (_lazyLoadObs) _lazyLoadObs.unobserve(v); } catch (e) {}
+    try { if (_lazyKeepObs) _lazyKeepObs.unobserve(v); } catch (e) {}
+    try { if (mobObs)       mobObs.unobserve(v);       } catch (e) {}
+    if (!v.paused) v.pause();
+  });
+  _allVideos = null;   // cached list is stale once these nodes are gone
+};
+
+window.reinitGallery = function reinitGallery() {
+  // Video-card thumbnail overlays + click-to-play
+  document.querySelectorAll('.gal-item[data-type="video"], .gal-item[data-fs-type="video"]').forEach(item => {
+    const wrap  = item.querySelector('.gal-media-wrap');
+    const video = item.querySelector('video.gal-video');
+    if (wrap && !wrap.querySelector('.vid-thumb-overlay')) {
+      const ov = document.createElement('div');
+      ov.className = 'vid-thumb-overlay';
+      ov.innerHTML = '<svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>';
+      wrap.appendChild(ov);
+    }
+    const ov = wrap?.querySelector('.vid-thumb-overlay');
+    if (ov && video && !ov._wired) {
+      ov._wired = true;
+      ov.addEventListener('click', e => {
+        e.stopPropagation();
+        ensureLoaded(video);
+        pauseOthers(video);
+        video.removeAttribute('muted');
+        video.muted = false;
+        const p = video.play();
+        if (p) p.catch(() => { video.muted = true; video.play().catch(()=>{}); });
+        item.classList.add('touch-playing');
+        syncMuteBtn(video);
+      });
+    }
+  });
+
+  // Videos — playback, ratio, first frame, play/pause visuals
+  document.querySelectorAll('video.gal-video').forEach(v => {
+    if (v._galWired) return;
+    v._galWired = true;
+    injectMuteIndicator(v);
+    attachHoverPlay(v);
+    attachMobilePlay(v);
+    attachMuteBtn(v);
+    detectVideoRatio(v);
+    if (v.readyState >= 1) { seekFirstFrame(v); }
+    else { v.addEventListener('loadedmetadata', () => seekFirstFrame(v), { once: true }); }
+    v.addEventListener('playing', () => {
+      v.closest('.gal-item')?.classList.add('gal-video-playing');
+      v.closest('.gal-item')?.querySelector('.vid-thumb-overlay')?.style.setProperty('opacity', '0');
+    });
+    v.addEventListener('pause', () => {
+      v.closest('.gal-item')?.classList.remove('gal-video-playing');
+      v.closest('.gal-item')?.querySelector('.vid-thumb-overlay')?.style.removeProperty('opacity');
+    });
+    v.addEventListener('error', () => {
+      const item = v.closest('.gal-item'); if (!item) return;
+      const wrap = item.querySelector('.gal-media-wrap'); if (!wrap) return;
+      if (wrap.querySelector('.gal-missing-placeholder')) return;
+      wrap.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)';
+      const ph = document.createElement('div');
+      ph.className = 'gal-missing-placeholder';
+      ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;z-index:1;';
+      const name = item.dataset.fsName || 'Video';
+      const cat  = item.dataset.fsCat  || '';
+      ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><polygon points="5,3 19,12 5,21" fill="rgba(232,57,42,0.15)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${galEsc(cat)}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${galEsc(name)}</span>`;
+      wrap.appendChild(ph);
+    });
+  });
+
+  // Images — ratio + missing-file placeholder
+  document.querySelectorAll('img.gal-photo').forEach(img => {
+    if (img._galWired) return;
+    img._galWired = true;
+    detectImageRatio(img);
+    img.addEventListener('error', () => {
+      const item = img.closest('.gal-item'); if (!item) return;
+      const wrap = item.querySelector('.gal-media-wrap');
+      if (!wrap || wrap.querySelector('.gal-missing-placeholder')) return;
+      wrap.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)';
+      const ph = document.createElement('div');
+      ph.className = 'gal-missing-placeholder';
+      ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;z-index:1;';
+      const name = item.dataset.fsName || 'Image';
+      const cat  = item.dataset.fsCat  || '';
+      ph.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,57,42,0.6)" stroke-width="1.5" style="width:40px;height:40px"><rect x="3" y="3" width="18" height="18" rx="2" fill="rgba(232,57,42,0.1)"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(232,57,42,0.5)"/><polyline points="21,15 16,10 5,21" stroke="rgba(232,57,42,0.5)"/></svg><span style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:2px;color:rgba(232,57,42,0.7);text-transform:uppercase;">${galEsc(cat)}</span><span style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:2px;color:rgba(245,242,238,0.7);text-transform:uppercase;text-align:center;padding:0 1rem">${galEsc(name)}</span>`;
+      wrap.appendChild(ph);
+    });
+  });
+
+  // Card cursor + gal-play-btn click wiring
+  document.querySelectorAll('.gal-item').forEach(item => {
+    item.style.cursor = 'pointer';
+    const playBtn = item.querySelector('.gal-play-btn');
+    const video   = item.querySelector('video.gal-video');
+    if (playBtn && video && !playBtn._wired) {
+      playBtn._wired = true;
+      playBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        ensureLoaded(video);
+        if (video.paused) {
+          pauseOthers(video);
+          video.removeAttribute('muted');
+          video.muted = false;
+          const p = video.play();
+          if (p) p.catch(() => { video.muted = true; video.play().catch(()=>{}); });
+          item.classList.add('touch-playing');
+          playBtn.classList.add('playing');
+        } else {
+          video.pause();
+          video.currentTime = 0;
+          item.classList.remove('touch-playing');
+          playBtn.classList.remove('playing');
+        }
+        syncMuteBtn(video);
+      });
+    }
+  });
+
+  // Lazy-load + fullscreen viewer buttons for the new cards
+  setupLazyLoad('video.gal-video');
+  if (window.fsvInjectExpandButtons) window.fsvInjectExpandButtons();
+
+  // Invalidate cached video list so pauseOthers() sees the new videos
+  _allVideos = null;
+};
 
 // ── Gallery scroll helper ──
 function openGallery() {
@@ -1029,6 +1184,8 @@ function closeGallery() {}
   } else {
     injectExpandButtons();
   }
+  // Expose so the media engine can re-inject expand buttons after re-rendering.
+  window.fsvInjectExpandButtons = injectExpandButtons;
 })();
 
 // ── Legacy stubs — keep onclick= attributes from breaking ──

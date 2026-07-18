@@ -7,5 +7,6 @@
    can verify the gallery loaded. Safe to keep or remove.
    ===================================================================== */
 
-// AutoGallery disabled — all items hardcoded above from All Projects folder
-console.log('[Gallery] 71 items loaded from All Projects folder.');
+// Gallery items are now rendered dynamically by js/05-media-engine.js from the
+// owner's CDN (see window.LAXT_CDN in index.html). Nothing to build here.
+console.log('[Gallery] Dynamic media engine active.');
