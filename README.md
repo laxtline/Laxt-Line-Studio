@@ -120,8 +120,7 @@ laxt-line-studio/
 │   └── 06-admin.js             ← Hidden admin login + upload panel
 │
 ├── Logo  & Background/         ← Logo & background image assets
-├── Docs/                       ← Author's notes & documentation (not part of the site)
-└── Media Update/               ← Author's notes
+└── Docs/                       ← Author's notes & documentation (not part of the site)
 ```
 
 > **Load order matters:** CSS loads as `main.css` → `gallery.css` → `admin.css`; JS loads
